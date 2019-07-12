@@ -1,7 +1,9 @@
-import { Router } from 'express';
-import { accountRoutes } from "./account";
+import express, { Router } from "express";
+import rootRoutes from "./root";
+import accountRoutes from "./account";
 
-export const router = Router();
+const router = express.Router();
+router.use("/", rootRoutes);
 router.use("/account", accountRoutes);
 
-module.exports = router;
+export = router;
