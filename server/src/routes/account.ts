@@ -1,20 +1,24 @@
-import express = require('express');
-let router = express.Router();
+import { Router, Request, Response, NextFunction } from "express";
+const router = Router();
 
 router
-    .route("/login")
-    .get((req, res, next) => {
-        res.send('account/login')
+    .route('/login')
+    .get((req: Request, res: Response, next: NextFunction) => {
+        res.send('account/login');
     });
 router
-    .route("/signup")
-    .get((req, res, next) => {
-        res.send('account/signup')
+    .route('/signup')
+    .get((req: Request, res: Response, next: NextFunction) => {
+        res.send('account/signup');
     });
 router
-    .route("/logout")
-    .get((req, res, next) => {
-        res.send('account/logout')
+    .route('/logout')
+    .get((req: Request, res: Response, next: NextFunction) => {
+        res.send('account/logout');
     });
 
-module.exports = router;
+export class accountRoutes {
+    constructor() {
+
+    }
+}

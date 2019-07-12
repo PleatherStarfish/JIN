@@ -1,15 +1,24 @@
-import express from 'express';
+import * as express from "express";
+import {router} from "./routes";
+import * as bodyParser from "body-parser";
 
-const app = express();
-const port = 3000;
-
-app.get('/', (req, res) => {
-    res.send('The sedulous hyena ate the antelope!');
-});
-
-app.listen(port, err => {
-    if (err) {
-        return console.error(err);
+export class App {
+    constructor() {
+        this.app = express();
+        this.config();
+        this.routes();
     }
-    return console.log(`server is listening on ${port}`);
-});
+
+    public app: express.Application;
+
+    private config(): void {
+        this.app.use(bodyParser.json());
+        this.app.use(bodyParser.urlencoded({ extended: false }));
+    }
+
+    private routes(): void {
+        this.app.use('/', router);
+    }
+}
+
+export default new App().app;

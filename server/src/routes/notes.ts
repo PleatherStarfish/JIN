@@ -1,5 +1,5 @@
-import express = require('express');
-let router = express.Router();
+import { Router, Request, Response, NextFunction } from "express";
+const router = Router();
 
 // @route  GET notes/test
 // @desc   Tests post route
