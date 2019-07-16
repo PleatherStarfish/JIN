@@ -1,6 +1,6 @@
 import express, { Request, Response }  from "express";
 import * as bodyParser from "body-parser";
-const routes = require('./routes');
+import routes from "./routes";
 
 class Server {
     public app: express.Application;
@@ -14,8 +14,8 @@ class Server {
         this.app.use(bodyParser.urlencoded({ extended: false }));
     }
     private routes(): void {
-        const router = express.Router();
-        this.app.use('/', routes);
+        const router: express.Router = express.Router();
+        this.app.use("/", routes);
     }
 }
 export default new Server().app;

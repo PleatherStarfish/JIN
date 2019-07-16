@@ -1,21 +1,21 @@
 import server from "./app";
 
-function normalizePort(val) {
-    var port = parseInt(val, 10);
+function normalizePort(val: any): number {
+    var port: number = parseInt(val, 10);
     if (isNaN(port)) {
         return val; // named pipe
     }
     if (port >= 0) {
         return port; // port number
     }
-    return false;
+    throw "normalizePort error";
 }
 
-function onError(error) {
+function onError(error: any): void {
     if (error.syscall !== "listen") {
         throw error;
     }
-    var bind = typeof port === "string"
+    const bind: string = typeof port === "string"
         ? "Pipe " + port
         : "Port " + port;
     switch (error.code) { // handle specific listen errors with friendly messages

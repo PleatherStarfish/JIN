@@ -12,7 +12,6 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const bodyParser = __importStar(require("body-parser"));
-const routes = require('./routes');
 class Server {
     constructor() {
         this.app = express_1.default();
@@ -25,7 +24,7 @@ class Server {
     }
     routes() {
         const router = express_1.default.Router();
-        this.app.use('/', routes);
+        this.app.use('/', router);
     }
 }
 exports.default = new Server().app;
