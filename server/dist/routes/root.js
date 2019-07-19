@@ -4,24 +4,23 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 const express_1 = __importDefault(require("express"));
 const router = express_1.default.Router();
-router
-    .route("/")
+router.route("/")
     .get((req, res) => {
-    try {
-        res.status(200).json({
-            message: 'Root route is working.'
-        });
-    }
-    catch (error) {
-        res.status(500).json({
-            error: error.toString()
-        });
-    }
+    res.status(200).json({
+        message: "GET request to root."
+    });
 });
-router
-    .route("/dashboard")
-    .get((req, res, next) => {
-    res.send('dashboard');
+router.route("/dashboard")
+    .get((req, res) => {
+    res.status(200).json({
+        message: "GET dashboard."
+    });
+});
+router.route("/dashboard/:userId")
+    .get((req, res) => {
+    res.status(200).json({
+        message: "GET dashboard/:userId"
+    });
 });
 module.exports = router;
 //# sourceMappingURL=root.js.map

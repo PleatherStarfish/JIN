@@ -1,22 +1,29 @@
-import express, { Router, Request, Response, NextFunction } from "express";
+import express, { Request, Response } from "express";
 const router: express.Router = express.Router();
 
-router
-    .route("/login")
-    .get((req: Request, res: Response, next: NextFunction) => {
+router.route("/")
+    .get((req: Request, res: Response) => {
         res.status(200).json({
-            message: "GET request to account/login."
+            message: "GET request to /account"
         });
     });
-router
-    .route("/signup")
-    .get((req: Request, res: Response, next: NextFunction) => {
-        res.send("account/signup");
+router.route("/:userId/login")
+    .get((req: Request, res: Response) => {
+        res.status(200).json({
+            message: "GET request to /account/:userId/login"
+        });
     });
-router
-    .route("/logout")
-    .get((req: Request, res: Response, next: NextFunction) => {
-        res.send("account/logout");
+router.route("/:userId/signup")
+    .post((req: Request, res: Response) => {
+        res.status(200).json({
+            message: "post request to /account/:userId/signup"
+        });
+    });
+router.route("/:userId/logout")
+    .get((req: Request, res: Response) => {
+        res.status(200).json({
+            message: "GET request to /account/:userId/logout"
+        });
     });
 
 export = router;

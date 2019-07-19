@@ -12,13 +12,13 @@ function normalizePort(val) {
     if (port >= 0) {
         return port; // port number
     }
-    return false;
+    throw "normalizePort error";
 }
 function onError(error) {
     if (error.syscall !== "listen") {
         throw error;
     }
-    var bind = typeof port === "string"
+    const bind = typeof port === "string"
         ? "Pipe " + port
         : "Port " + port;
     switch (error.code) { // handle specific listen errors with friendly messages

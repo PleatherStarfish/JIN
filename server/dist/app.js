@@ -12,6 +12,10 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const bodyParser = __importStar(require("body-parser"));
+const mongoose_1 = __importDefault(require("mongoose"));
+const cors_1 = __importDefault(require("cors"));
+const routes_1 = __importDefault(require("./routes"));
+const keys_1 = require("./config/keys");
 class Server {
     constructor() {
         this.app = express_1.default();
@@ -19,12 +23,16 @@ class Server {
         this.routes();
     }
     config() {
+        this.app.use(cors_1.default());
         this.app.use(bodyParser.json());
         this.app.use(bodyParser.urlencoded({ extended: false }));
+        mongoose_1.default.connect(keys_1.db.mongoURI)
+            .then(() => console.log("MongoDB Connected"))
+            .catch(err => console.log(err));
     }
     routes() {
         const router = express_1.default.Router();
-        this.app.use('/', router);
+        this.app.use("/", routes_1.default);
     }
 }
 exports.default = new Server().app;

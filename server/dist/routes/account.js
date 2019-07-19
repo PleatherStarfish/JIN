@@ -4,20 +4,29 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 const express_1 = __importDefault(require("express"));
 const router = express_1.default.Router();
-router
-    .route("/login")
-    .get((req, res, next) => {
-    res.send('account/login');
+router.route("/")
+    .get((req, res) => {
+    res.status(200).json({
+        message: "GET request to /account"
+    });
 });
-router
-    .route("/signup")
-    .get((req, res, next) => {
-    res.send('account/signup');
+router.route("/:userId/login")
+    .get((req, res) => {
+    res.status(200).json({
+        message: "GET request to /account/:userId/login"
+    });
 });
-router
-    .route("/logout")
-    .get((req, res, next) => {
-    res.send('account/logout');
+router.route("/:userId/signup")
+    .post((req, res) => {
+    res.status(200).json({
+        message: "post request to /account/:userId/signup"
+    });
+});
+router.route("/:userId/logout")
+    .get((req, res) => {
+    res.status(200).json({
+        message: "GET request to /account/:userId/logout"
+    });
 });
 module.exports = router;
 //# sourceMappingURL=account.js.map

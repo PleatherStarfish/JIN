@@ -44,6 +44,7 @@
         "use-strict": false,
         "variable-name": [
             true,
+            "allow-pascal-case",
             "allow-leading-underscore"
         ],
         "whitespace": [

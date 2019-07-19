@@ -1,19 +1,24 @@
-import express, { Router, Request, Response, NextFunction } from "express";
+import express, { Request, Response } from "express";
 const router: express.Router = express.Router();
 
-router
-    .route("/")
+router.route("/")
     .get((req: Request, res: Response) => {
         res.status(200).json({
             message: "GET request to root."
         });
     });
-router
-    .route("/dashboard")
-    .get((req: Request, res: Response, next: NextFunction) => {
+router.route("/dashboard")
+    .get((req: Request, res: Response) => {
         res.status(200).json({
             message: "GET dashboard."
         });
     });
+router.route("/dashboard/:userId")
+    .get((req: Request, res: Response) => {
+        res.status(200).json({
+            message: "GET dashboard/:userId"
+        });
+    });
+
 
 export = router;
